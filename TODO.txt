@@ -1,6 +1,9 @@
 TODO: 
+    Go 3D for the Forward Kinematics [] 
+    Go 3D for the Inverse Kinematics [] 
     Do inverse kinematics [] @Current 
-    Go 3D []
+
+    Quick draft for 3D hexapod []
 
 DONE: 
     render debug circle [X]
