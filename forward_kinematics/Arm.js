@@ -11,6 +11,8 @@ class Arm {
 
         this.parent = null;
         this.accuAngle = this.angle;
+
+        this.debug = false;
     }
 
     setAngle(angle) {
@@ -45,6 +47,9 @@ class Arm {
         return this.endY; 
     }
 
+    setDebug(debug) {
+        this.debug = debug;
+    }
 
     attach(parent) {
         this.parent = parent;
@@ -66,6 +71,17 @@ class Arm {
 
     render() {
         this._update();
+
+
+        // start debug rendering
+        
+        if(this.debug) {
+            noFill();
+            circle(this.startX, this.startY, 2*this.length);
+            fill(255);
+        }
+
+        // end debug rendering
 
         strokeWeight(5);
         line(this.startX, this.startY, this.endX, this.endY);

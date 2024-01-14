@@ -3,6 +3,8 @@ class FKSystem {
         this.arms = [];
         this.x = x;
         this.y = y;
+
+        this.debug = false;
     }
 
     setX(x) {
@@ -11,6 +13,10 @@ class FKSystem {
 
     setY(y) {
         this.y = y;
+    }
+
+    setDebug(debug) {
+        this.debug = debug;
     }
 
     changeAngle(id, angle) {
@@ -31,7 +37,9 @@ class FKSystem {
     }
 
     render() {
+
         for(let i = 0; i < this.arms.length; i++) {
+            this.arms[i].setDebug(this.debug);
             this.arms[i].render();
         }
     }

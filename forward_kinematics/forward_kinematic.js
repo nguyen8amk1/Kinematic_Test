@@ -13,7 +13,6 @@ let arm3;
 let fkSystem;
 
 function setup(){
-
 	createCanvas(width, height); 
 
     slider = createSlider(0, 2*PI, 0, 0);
@@ -34,6 +33,15 @@ function setup(){
     arm1 = fkSystem.addArm(100);
     arm2 = fkSystem.addArm(100);
     arm3 = fkSystem.addArm(100);
+}
+
+let debug = false;
+
+function keyPressed() {
+    if (keyCode === 68) {
+        debug = !debug;
+        fkSystem.setDebug(debug);
+    }
 }
 
 function draw(){

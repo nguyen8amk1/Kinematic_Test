@@ -1,0 +1,6 @@
+TODO: 
+    Do inverse kinematics [] @Current 
+    Go 3D []
+
+DONE: 
+    render debug circle [X]
