@@ -10,10 +10,19 @@ class Arm {
         this.endY = this.startY + sin(this.angle)*this.length; 
 
         this.parent = null;
+        this.accuAngle = this.angle;
     }
 
     setAngle(angle) {
         this.angle = angle;
+    }
+
+    getAngle() {
+        return this.angle;
+    }
+
+    getAccumulatedAngle() {
+        return this.accuAngle;
     }
 
     setLength(length) {
@@ -36,23 +45,35 @@ class Arm {
         return this.endY; 
     }
 
+
+
+
+
     attach(parent) {
         this.parent = parent;
     }
 
-    render() {
-        strokeWeight(5);
+    _update() {
+        let newAngle = this.angle;
         if(this.parent) {
-            // TODO: fix some angle issues 
-            
             this.setStartX(this.parent.getEndX());
             this.setStartY(this.parent.getEndY());
+            newAngle = this.angle + this.parent.getAccumulatedAngle();
         }
 
-        this.endX = this.startX + cos(this.angle)*this.length; 
-        this.endY = this.startY + sin(this.angle)*this.length; 
+        this.accuAngle = newAngle; 
+
+        this.endX = this.startX + cos(newAngle)*this.length; 
+        this.endY = this.startY + sin(newAngle)*this.length; 
+    }
+
+    render() {
+        this._update();
+
+        strokeWeight(5);
         line(this.startX, this.startY, this.endX, this.endY);
         strokeWeight(1);
+
     } 
 }; 
 
